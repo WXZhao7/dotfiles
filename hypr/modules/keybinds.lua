@@ -14,7 +14,7 @@ function M.setup(vars)
     ----------------
 
     hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
-    hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(launcher))
+    hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(launcher))
     hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(launcher))
     hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
     hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
@@ -25,7 +25,7 @@ function M.setup(vars)
 
     hl.bind(mainMod .. " + Q", hl.dsp.window.close())
     hl.bind("ALT + F4", hl.dsp.window.close())
-    hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+    hl.bind(mainMod .. " + X", hl.dsp.window.float({ action = "toggle" }))
     hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle", mode = "fullscreen" }))
     hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ action = "toggle", mode = "maximized" }))
     hl.bind(mainMod .. " + P", hl.dsp.window.pseudo({ action = "toggle" }))
@@ -135,7 +135,7 @@ function M.setup(vars)
     ----------------
 
     hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("command -v hyprlock >/dev/null 2>&1 && hyprlock"))
-    hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd("command -v wlogout >/dev/null 2>&1 && wlogout || command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))
+    hl.bind(mainMod .. " + DELETE", hl.dsp.exec_cmd("command -v wlogout >/dev/null 2>&1 && wlogout || command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))
 end
 
 return M
