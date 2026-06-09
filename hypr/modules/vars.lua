@@ -4,7 +4,7 @@ M.mainMod = "SUPER"
 
 -- Common programs. Keep these values in one place so modules can stay small.
 M.menu = "fuzzel"
-M.terminal = "kitty"
+M.terminal = "foot"
 M.fileManager = "thunar"
 M.browser = "firefox"
 

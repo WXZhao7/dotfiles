@@ -20,6 +20,9 @@ function M.setup()
     hl.env("XMODIFIERS", "@im=fcitx")
     hl.env("QT_IM_MODULE", "fcitx")
     hl.env("SDL_IM_MODULE", "fcitx")
+
+    -- Open-SSH agent socket
+    hl.env("SSH_AUTH_SOCK", os.getenv("XDG_RUNTIME_DIR").."/ssh-agent.socket")
 end
 
 return M
