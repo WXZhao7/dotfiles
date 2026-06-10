@@ -1,0 +1,148 @@
+* {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  -gtk-icon-shadow: none;
+  text-shadow: none;
+  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", "Noto Sans CJK SC", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(12, 15, 18, 0.70);
+  border: 1px solid rgba(210, 222, 232, 0.08);
+  border-radius: 0;
+  color: #e8eef4;
+}
+
+tooltip {
+  background-color: rgba(16, 20, 24, 0.96);
+  background-image: none;
+  border: 1px solid rgba(221, 230, 238, 0.12);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+tooltip label {
+  background: transparent;
+  color: #edf3f8;
+  padding: 6px 8px;
+  text-shadow: none;
+}
+
+tooltip * {
+  background: transparent;
+  box-shadow: none;
+  -gtk-icon-shadow: none;
+  text-shadow: none;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+  background: transparent;
+  padding: 2px 4px;
+}
+
+#workspaces,
+#clock,
+#network,
+#cpu,
+#memory,
+#wireplumber {
+  margin: 0 2px;
+  padding: 0 10px;
+  border-radius: 6px;
+  color: #e8eef4;
+}
+
+#workspaces {
+  padding: 0 3px;
+}
+
+#workspaces button {
+  min-width: 24px;
+  margin: 0 1px;
+  padding: 0 7px;
+  border-radius: 6px;
+  background: transparent;
+  color: #8b98a5;
+}
+
+#workspaces button:hover {
+  background: rgba(232, 238, 244, 0.10);
+  color: #f6fafc;
+}
+
+#workspaces button.active {
+  background: rgba(232, 238, 244, 0.18);
+  color: #ffffff;
+}
+
+#workspaces button.special {
+  color: #79c0ff;
+}
+
+#workspaces button.special.active {
+  background: rgba(121, 192, 255, 0.20);
+  color: #dff0ff;
+}
+
+#workspaces button.urgent {
+  background: rgba(237, 92, 82, 0.25);
+  color: #ffd8d5;
+}
+
+#workspaces .taskbar-window {
+  min-width: 22px;
+  min-height: 22px;
+  margin: 0 1px;
+  padding: 0 4px;
+  border-radius: 6px;
+  background: transparent;
+}
+
+#workspaces .taskbar-window:hover {
+  background: rgba(232, 238, 244, 0.10);
+}
+
+#workspaces .taskbar-window.active {
+  background: rgba(121, 192, 255, 0.18);
+}
+
+#clock {
+  background: transparent;
+  color: #f6fafc;
+  padding: 0 14px;
+}
+
+#network,
+#cpu,
+#memory,
+#wireplumber {
+  background: transparent;
+}
+
+#network.disconnected,
+#wireplumber.muted {
+  background: rgba(237, 92, 82, 0.14);
+  color: #ffb4ae;
+}
+
+#cpu.warning,
+#memory.warning {
+  color: #ffd166;
+}
+
+#cpu.critical,
+#memory.critical {
+  background: rgba(237, 92, 82, 0.14);
+  color: #ffb4ae;
+}
+
+#wireplumber {
+  min-width: 74px;
+}
