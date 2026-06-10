@@ -12,11 +12,16 @@
     "clock"
   ],
   "modules-right": [
+    "group/network",
+    "tray",
+    "cpu",
+    "memory",
+    "wireplumber"
   ],
   "hyprland/workspaces": {
     "format": "{icon} {windows}",
     "format-window-separator": "",
-    "sort-by": "id", // maybe magic(-98) first?
+    "sort-by": "id",
     "show-special": true,
     "special-visible-only": true,
     "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'",
@@ -29,7 +34,7 @@
       "enable": true,
       "update-active-window": true,
       "format": "{icon}",
-      "icon-size": 18,
+      "icon-size": 20,
       "on-click-window": "hyprctl dispatch 'hl.dsp.focus({ window = \"address:{address}\" })'"
     }
   },
@@ -45,48 +50,54 @@
     "format": "{:%a %m/%d  %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
-  "group/group-power": {
+  "tray": {
+    "icon-size": 16,
+    "spacing": 5
+  },
+  "group/network": {
     "orientation": "inherit",
     "drawer": {
-      "transition-duration": 500,
-      "children-class": "not-power",
+      "click-to-reveal": true,
+      "children-class": "network-detail",
+      "transition-duration": 300,
       "transition-left-to-right": false
     },
     "modules": [
-      "custom/power", // First element is the "group leader" and won't ever be hidden
-      "cpu",
-      "memory",
-      "network"
+      "network#total",
+      "network#down",
+      "network#up"
     ]
   },
-  "custom/quit": {
-    "format": "󰗼",
-    "tooltip": false,
-    "on-click": "hyprctl dispatch exit"
-  },
-  "custom/lock": {
-    "format": "󰍁",
-    "tooltip": false,
-    "on-click": "swaylock"
-  },
-  "custom/reboot": {
-    "format": "󰜉",
-    "tooltip": false,
-    "on-click": "reboot"
-  },
-  "custom/power": {
-    "format": "",
-    "tooltip": false,
-    "on-click": "shutdown now"
-  },
-  "network": {
-    "interval": 5,
-    "format-wifi": "󰤨 {essid}",
-    "format-ethernet": "󰈀 {ifname}",
-    "format-linked": "󰈁 {ifname}",
+  "network#total": {
+    "interval": 1,
+    "format-wifi": "󰖩 {bandwidthTotalBits}",
+    "format-ethernet": "󰈀 {bandwidthTotalBits}",
+    "format-linked": "󰈁 linked",
     "format-disconnected": "󰤮 offline",
-    "format-alt": "󰩟 {ipaddr}",
-    "tooltip-format": "{ifname}\n{ipaddr}/{cidr}\n{essid} {signalStrength}%"
+    "format-disabled": "󰤮 off",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname} {ipaddr}/{cidr}",
+    "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}",
+    "tooltip-format-linked": "{ifname} linked",
+    "tooltip-format-disconnected": "Network disconnected",
+    "tooltip-format-disabled": "Network disabled"
+  },
+  "network#down": {
+    "interval": 1,
+    "format-wifi": "󰇚 {bandwidthDownBits}",
+    "format-ethernet": "󰇚 {bandwidthDownBits}",
+    "format-linked": "󰇚 0 b/s",
+    "format-disconnected": "󰇚 0 b/s",
+    "format-disabled": "󰇚 0 b/s",
+    "tooltip": false
+  },
+  "network#up": {
+    "interval": 1,
+    "format-wifi": "󰕒 {bandwidthUpBits}",
+    "format-ethernet": "󰕒 {bandwidthUpBits}",
+    "format-linked": "󰕒 0 b/s",
+    "format-disconnected": "󰕒 0 b/s",
+    "format-disabled": "󰕒 0 b/s",
+    "tooltip": false
   },
   "cpu": {
     "interval": 3,
@@ -98,13 +109,15 @@
   },
   "memory": {
     "interval": 3,
-    "format": " {}%",
+    "format": " {percentage}%",
+    "tooltip-format": "Memory: {used:0.1f}G / {total:0.1f}G\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G",
     "states": {
       "warning": 70,
       "critical": 90
     }
   },
   "wireplumber": {
+    "node-type": "Audio/Sink",
     "format": "{icon} {volume}%",
     "format-muted": "󰝟 muted",
     "format-icons": [
@@ -112,11 +125,12 @@
       "",
       ""
     ],
-    "max-volume": 150,
+    "max-volume": 100,
     "scroll-step": 5,
+    "on-click": "hyprctl dispatch 'hl.dsp.exec_cmd(\"foot --app-id waybar-foot -e wiremix --tab output --max-volume-percent 100 --enforce-max-volume\", { float = true, size = {900, 600}, center = true })'",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-    "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
-    "tooltip-format": "Volume: {volume}%\nLeft click: next audio output\nRight click: mute"
+    "tooltip-format": "Output: {node_name}\nVolume: {volume}%"
   }
 }

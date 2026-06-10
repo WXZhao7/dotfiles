@@ -47,14 +47,20 @@ tooltip * {
   padding: 2px 4px;
 }
 
+.modules-right {
+  padding: 2px 2px;
+}
+
 #workspaces,
 #clock,
+#group-network,
+#tray,
 #network,
 #cpu,
 #memory,
 #wireplumber {
-  margin: 0 2px;
-  padding: 0 10px;
+  margin: 0 1px;
+  padding: 0 8px;
   border-radius: 6px;
   color: #e8eef4;
 }
@@ -97,12 +103,23 @@ tooltip * {
 }
 
 #workspaces .taskbar-window {
-  min-width: 22px;
-  min-height: 22px;
-  margin: 0 1px;
-  padding: 0 4px;
+  min-width: 20px;
+  min-height: 20px;
+  margin: 2px 1px;
+  padding: 3px;
   border-radius: 6px;
   background: transparent;
+}
+
+#workspaces .taskbar-window image,
+#workspaces .taskbar-window label {
+  margin: 0;
+  padding: 0;
+}
+
+#workspaces .taskbar-window image {
+  min-width: 20px;
+  min-height: 20px;
 }
 
 #workspaces .taskbar-window:hover {
@@ -110,7 +127,7 @@ tooltip * {
 }
 
 #workspaces .taskbar-window.active {
-  background: rgba(121, 192, 255, 0.18);
+  background: rgba(121, 192, 255, 0.32);
 }
 
 #clock {
@@ -126,7 +143,42 @@ tooltip * {
   background: transparent;
 }
 
+.modules-right #group-network,
+.modules-right #tray,
+.modules-right #network,
+.modules-right #cpu,
+.modules-right #memory,
+.modules-right #wireplumber {
+  margin: 0;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+#group-network {
+  margin: 0;
+  padding: 0;
+}
+
+#tray {
+  padding: 0 3px;
+}
+
+#network {
+  min-width: 68px;
+  padding: 0 3px;
+}
+
+.network-detail {
+  color: #aeb9c4;
+}
+
+#cpu,
+#memory {
+  min-width: 44px;
+}
+
 #network.disconnected,
+#network.disabled,
 #wireplumber.muted {
   background: rgba(237, 92, 82, 0.14);
   color: #ffb4ae;
@@ -144,5 +196,5 @@ tooltip * {
 }
 
 #wireplumber {
-  min-width: 74px;
+  min-width: 58px;
 }
