@@ -4,7 +4,6 @@
   "height": 34,
   "spacing": 0,
   "modules-left": [
-    "hyprland/submap",
     "hyprland/workspaces",
     "hyprland/window"
   ],
@@ -44,11 +43,44 @@
     "tooltip": false
   },
   "hyprland/window": {
-    "max-length": 33
+    "format": "{title}",
+    "icon": true,
+    "icon-size": 16,
+    "max-length": 54,
+    "separate-outputs": true,
+    "rewrite": {
+      "^\\s*$": "Desktop"
+    }
   },
   "clock": {
     "format": "{:%a %m/%d  %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+  "mpris": {
+    "player": "playerctld",
+    "format": "{status_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "format-stopped": "",
+    "tooltip-format": "{player} ({status})\n{artist}\n{title}",
+    "artist-len": 18,
+    "title-len": 28,
+    "album-len": 0,
+    "dynamic-len": 44,
+    "dynamic-order": [
+      "artist",
+      "title"
+    ],
+    "dynamic-importance-order": [
+      "title",
+      "artist"
+    ],
+    "dynamic-separator": " - ",
+    "status-icons": {
+      "playing": "󰐊",
+      "paused": "󰏤",
+      "stopped": ""
+    },
+    "max-length": 52
   },
   "tray": {
     "icon-size": 16,

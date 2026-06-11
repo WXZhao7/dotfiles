@@ -52,7 +52,9 @@ tooltip * {
 }
 
 #workspaces,
+#window,
 #clock,
+#mpris,
 #group-network,
 #tray,
 #network,
@@ -67,6 +69,17 @@ tooltip * {
 
 #workspaces {
   padding: 0 3px;
+}
+
+#window {
+  margin-left: 10px;
+  padding: 0 8px;
+  color: #c8d2dc;
+  font-weight: 500;
+}
+
+window#waybar.empty #window {
+  color: #707d89;
 }
 
 #workspaces button {
@@ -136,6 +149,25 @@ tooltip * {
   padding: 0 14px;
 }
 
+#mpris {
+  margin-left: 6px;
+  padding: 0 10px;
+  background: rgba(232, 238, 244, 0.08);
+  color: #d5dee7;
+  font-weight: 500;
+  min-width: 0;
+}
+
+#mpris:hover {
+  background: rgba(232, 238, 244, 0.12);
+  color: #f6fafc;
+}
+
+#mpris.paused {
+  color: #8f9ba7;
+  background: rgba(232, 238, 244, 0.04);
+}
+
 #network,
 #cpu,
 #memory,
@@ -159,8 +191,15 @@ tooltip * {
   padding: 0;
 }
 
-#tray {
-  padding: 0 3px;
+.modules-right > widget > #tray {
+  margin: 0 2px;
+  padding: 0 10px;
+}
+
+#tray > .passive,
+#tray > .active,
+#tray > .needs-attention {
+  margin: 0 2px;
 }
 
 #network {
@@ -173,7 +212,8 @@ tooltip * {
 }
 
 #cpu,
-#memory {
+#memory,
+#wireplumber {
   min-width: 44px;
 }
 
@@ -195,6 +235,40 @@ tooltip * {
   color: #ffb4ae;
 }
 
-#wireplumber {
-  min-width: 58px;
+/*
+ * Debug right-side module allocation. Uncomment while tuning spacing.
+ *
+ * .modules-right #group-network,
+ * .modules-right #network,
+ * .modules-right #tray,
+ * .modules-right #cpu,
+ * .modules-right #memory,
+ * .modules-right #wireplumber {
+ *   border: 1px solid rgba(255, 255, 255, 0.45);
+ * }
+ *
+ * .modules-right #group-network,
+ * .modules-right #network {
+ *   background: rgba(217, 35, 114, 0.18);
+ * }
+ *
+ * .modules-right #tray {
+ *   background: rgba(255, 209, 102, 0.18);
+ * }
+ *
+ * .modules-right #cpu {
+ *   background: rgba(126, 231, 135, 0.18);
+ * }
+ *
+ * .modules-right #memory {
+ *   background: rgba(196, 167, 231, 0.18);
+ * }
+ *
+ * .modules-right #wireplumber {
+ *   background: rgba(255, 140, 105, 0.18);
+ * }
+ */
+
+.modules-right #wireplumber {
+  margin-right: 4px;
 }
