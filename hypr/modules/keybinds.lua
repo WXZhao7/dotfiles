@@ -136,6 +136,13 @@ function M.setup(vars)
 
     hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("command -v hyprlock >/dev/null 2>&1 && hyprlock"))
     hl.bind(mainMod .. " + DELETE", hl.dsp.exec_cmd("command -v wlogout >/dev/null 2>&1 && wlogout || command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch exit"))
+
+
+    -------------------
+    ---- clipboard ----
+    -------------------
+    hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("foot --app-id clipse -e clipse"))
+
 end
 
 return M
