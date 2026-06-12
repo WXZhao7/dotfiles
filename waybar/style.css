@@ -57,6 +57,7 @@ tooltip * {
 #mpris,
 #group-network,
 #tray,
+#keyboard-state,
 #network,
 #cpu,
 #memory,
@@ -177,6 +178,7 @@ window#waybar.empty #window {
 
 .modules-right #group-network,
 .modules-right #tray,
+.modules-right #keyboard-state,
 .modules-right #network,
 .modules-right #cpu,
 .modules-right #memory,
@@ -200,6 +202,21 @@ window#waybar.empty #window {
 #tray > .active,
 #tray > .needs-attention {
   margin: 0 2px;
+}
+
+#keyboard-state {
+  min-width: 42px;
+  padding: 0 6px;
+  color: #8f9ba7;
+}
+
+#keyboard-state label {
+  margin: 0;
+  padding: 0;
+}
+
+#keyboard-state label.locked {
+  color: #ffd166;
 }
 
 #network {
@@ -235,40 +252,61 @@ window#waybar.empty #window {
   color: #ffb4ae;
 }
 
-/*
- * Debug right-side module allocation. Uncomment while tuning spacing.
- *
- * .modules-right #group-network,
- * .modules-right #network,
- * .modules-right #tray,
- * .modules-right #cpu,
- * .modules-right #memory,
- * .modules-right #wireplumber {
- *   border: 1px solid rgba(255, 255, 255, 0.45);
- * }
- *
- * .modules-right #group-network,
- * .modules-right #network {
- *   background: rgba(217, 35, 114, 0.18);
- * }
- *
- * .modules-right #tray {
- *   background: rgba(255, 209, 102, 0.18);
- * }
- *
- * .modules-right #cpu {
- *   background: rgba(126, 231, 135, 0.18);
- * }
- *
- * .modules-right #memory {
- *   background: rgba(196, 167, 231, 0.18);
- * }
- *
- * .modules-right #wireplumber {
- *   background: rgba(255, 140, 105, 0.18);
- * }
- */
-
 .modules-right #wireplumber {
   margin-right: 4px;
 }
+
+/* Debug all module allocation. Remove/comment after spacing is tuned. */
+/* .modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+  border: 1px solid rgba(255, 255, 255, 0.46);
+}
+
+.modules-left > widget:nth-child(1) > * {
+  background: rgba(121, 192, 255, 0.18);
+}
+
+.modules-left > widget:nth-child(2) > * {
+  background: rgba(255, 209, 102, 0.18);
+}
+
+.modules-left > widget:nth-child(3) > * {
+  background: rgba(126, 231, 135, 0.18);
+}
+
+.modules-center > widget:nth-child(1) > * {
+  background: rgba(196, 167, 231, 0.18);
+}
+
+.modules-center > widget:nth-child(2) > * {
+  background: rgba(255, 140, 105, 0.18);
+}
+
+.modules-center > widget:nth-child(3) > * {
+  background: rgba(217, 35, 114, 0.18);
+}
+
+.modules-right > widget:nth-child(1) > * {
+  background: rgba(121, 192, 255, 0.18);
+}
+
+.modules-right > widget:nth-child(2) > * {
+  background: rgba(255, 209, 102, 0.18);
+}
+
+.modules-right > widget:nth-child(3) > * {
+  background: rgba(126, 231, 135, 0.18);
+}
+
+.modules-right > widget:nth-child(4) > * {
+  background: rgba(196, 167, 231, 0.18);
+}
+
+.modules-right > widget:nth-child(5) > * {
+  background: rgba(255, 140, 105, 0.18);
+}
+
+.modules-right > widget:nth-child(6) > * {
+  background: rgba(217, 35, 114, 0.18);
+} */
