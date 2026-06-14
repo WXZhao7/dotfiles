@@ -8,6 +8,7 @@ local modules = {
     "modules.env",
     "modules.autostart",
     "modules.core",
+    "modules.windowrules",
     "modules.keybinds",
 }
 
