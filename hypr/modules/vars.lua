@@ -8,6 +8,8 @@ M.terminal = "foot"
 M.fileManager = "thunar"
 M.browser = "firefox"
 
+M.clipboard = "footclient --app-id clipse-tui -e clipse"
+
 -- Screenshot tools: grim + slurp + wl-clipboard.
 M.screenshotArea = "grim -g \"$(slurp)\" - | wl-copy"
 M.screenshotFull = "grim - | wl-copy"
