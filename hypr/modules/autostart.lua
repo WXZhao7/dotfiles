@@ -2,6 +2,7 @@ local M = {}
 
 function M.setup()
     hl.on("hyprland.start", function()
+        hl.exec_cmd("hyprpm reload -n")
     -- UWSM manages environment, graphical-session.target, portal, and user services.
     -- Keep only Hyprland-specific one-shot commands here if needed.
 
