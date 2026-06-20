@@ -1,0 +1,45 @@
+# ~/.config/hypr/import-env.sh
+# POSIX shell fragment; load with:
+# . ~/.config/hypr/import-env.sh
+
+if [ -z "${XDG_RUNTIME_DIR:-}" ]; then
+    XDG_RUNTIME_DIR="/run/user/$(id -u)"
+    export XDG_RUNTIME_DIR
+fi
+
+if [ -z "${HYPRLAND_INSTANCE_SIGNATURE:-}" ]; then
+    if [ -d "$XDG_RUNTIME_DIR/hypr" ]; then
+        HYPRLAND_INSTANCE_SIGNATURE=$(
+            /bin/ls -t "$XDG_RUNTIME_DIR/hypr" 2>/dev/null | sed -n '1p'
+        )
+
+        if [ -n "$HYPRLAND_INSTANCE_SIGNATURE" ]; then
+            export HYPRLAND_INSTANCE_SIGNATURE
+        fi
+    fi
+fi
+
+if [ -z "${WAYLAND_DISPLAY:-}" ]; then
+    WAYLAND_DISPLAY=$(
+        find "$XDG_RUNTIME_DIR" -maxdepth 1 -type s -name 'wayland-*' -print 2>/dev/null |
+            while IFS= read -r path; do
+                name=${path##*/}
+                suffix=${name#wayland-}
+
+                case $suffix in
+                '' | *[!0123456789]*)
+                    continue
+                    ;;
+                *)
+                    printf '%s\n' "$name"
+                    break
+                    ;;
+                esac
+
+            done
+    )
+
+    if [ -n "$WAYLAND_DISPLAY" ]; then
+        export WAYLAND_DISPLAY
+    fi
+fi
