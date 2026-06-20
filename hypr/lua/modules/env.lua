@@ -1,11 +1,11 @@
 local M = {}
 
-function M.setup()
-	-- Environment variables are managed by UWSM:
-	--   ~/.config/uwsm/env
-	--   ~/.config/uwsm/env-hyprland
-	-- and SSH_AUTH_SOCK by:
-	--   ~/.config/environment.d/10-ssh-agent.conf
+-- Environment variables are managed by UWSM:
+--   ~/.config/uwsm/env
+--   ~/.config/uwsm/env-hyprland
+-- and SSH_AUTH_SOCK by:
+--   ~/.config/environment.d/10-ssh-agent.conf
+function M.apply(_config)
 
 	-- -- Desktop/session identity for portals and systemd user services.
 	-- hl.env("XDG_CURRENT_DESKTOP", "Hyprland")

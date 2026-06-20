@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup()
+function M.apply(_config)
 	hl.config({
 		general = {
 			gaps_in = 3,
@@ -21,20 +21,6 @@ function M.setup()
 		},
 
 		animations = { enabled = true },
-
-		input = {
-			kb_layout = "us",
-			kb_variant = "",
-			kb_model = "",
-			kb_options = "",
-			kb_rules = "",
-
-			follow_mouse = 1,
-			sensitivity = 0,
-
-			touchpad = { natural_scroll = false },
-		},
-
 		dwindle = { preserve_split = true },
 
 		misc = {
@@ -42,8 +28,7 @@ function M.setup()
 			disable_hyprland_logo = true,
 			disable_splash_rendering = true,
 		},
-	})
-	hl.config({
+
 		plugin = {
 			hyprexpo = {
 				columns = 2,

@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup()
+function M.apply(_config)
 	hl.window_rule({ match = { class = "firefox" }, no_blur = true })
 	--------------------------
 	---- FLOATING WINDOW -----

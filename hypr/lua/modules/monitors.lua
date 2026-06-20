@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup()
+function M.apply(_config)
 	-- Fallback rule: use any connected monitor with preferred mode.
 	-- Replace output/mode/position after checking `hyprctl monitors all`.
 	hl.monitor({

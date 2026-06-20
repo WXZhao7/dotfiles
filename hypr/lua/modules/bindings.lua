@@ -1,14 +1,14 @@
 local M = {}
 
-function M.setup(vars)
-	local mainMod = vars.mainMod
-	local terminal = vars.terminal
-	local fileManager = vars.fileManager
-	local browser = vars.browser
-	local launcher = vars.menu
-	local clipboard = vars.clipboard
-	local screenshotArea = vars.screenshotArea
-	local screenshotFull = vars.screenshotFull
+function M.apply(config)
+	local mainMod = config.mod
+	local terminal = config.apps.terminal
+	local fileManager = config.apps.file_manager
+	local browser = config.apps.browser
+	local launcher = config.apps.menu
+	local clipboard = config.commands.clipboard
+	local screenshotArea = config.commands.screenshot_area
+	local screenshotFull = config.commands.screenshot_full
 
 	----------------
 	---- APPS ------

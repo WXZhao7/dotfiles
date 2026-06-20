@@ -1,17 +1,19 @@
 -- ~/.config/hypr/hyprland.lua
 -- Modular Hyprland Lua config.
 
-local vars = require("modules.vars")
+local config = require("lua.config")
 
-local modules = {
-    "modules.monitors",
-    "modules.env",
-    "modules.autostart",
-    "modules.core",
-    "modules.windowrules",
-    "modules.keybinds",
+local module_names = {
+	"lua.modules.monitors",
+	"lua.modules.input",
+	"lua.modules.appearance",
+	"lua.modules.rules",
+	"lua.modules.autostart",
+	"lua.modules.bindings",
 }
 
-for _, module_name in ipairs(modules) do
-    require(module_name).setup(vars)
+for _, name in ipairs(module_names) do
+	local module = require(name)
+	assert(type(module.apply) == "function", name .. " must	export apply(config)")
+	module.apply(config)
 end
