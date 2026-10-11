@@ -1,24 +1,26 @@
 local M = {}
 
+local browser = "firefox"
+local terminal = "footclient"
+local file_manager = "thunar"
+local uwsm_launcher = 'fuzzel "--launch-prefix=uwsm app --"'
+local clipboard = "footclient --app-id clipse-tui -e clipse"
+
+local function uwsm_run(command)
+	return hl.dsp.exec_cmd("uwsm app -- " .. command)
+end
+
 function M.apply(config)
 	local mainMod = config.mod
-	local terminal = config.apps.terminal
-	local fileManager = config.apps.file_manager
-	local browser = config.apps.browser
-	local launcher = config.apps.menu
-	local clipboard = config.commands.clipboard
-	local screenshotArea = config.commands.screenshot_area
-	local screenshotFull = config.commands.screenshot_full
-
 	----------------
 	---- APPS ------
 	----------------
 
-	hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal), { description = "Open terminal" })
-	hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(launcher), { description = "Open application launcher" })
-	hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(launcher), { description = "Open application launcher" })
-	hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager), { description = "Open file manager" })
-	hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser), { description = "Open web browser" })
+	hl.bind(mainMod .. " + Return", uwsm_run(terminal), { description = "Open terminal" })
+	hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(uwsm_launcher), { description = "Open application launcher" })
+	hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(uwsm_launcher), { description = "Open application launcher" })
+	hl.bind(mainMod .. " + E", uwsm_run(file_manager), { description = "Open file manager" })
+	hl.bind(mainMod .. " + B", uwsm_run(browser), { description = "Open web browser" })
 
 	----------------
 	---- WINDOW ----
@@ -165,8 +167,7 @@ function M.apply(config)
 		hl.plugin.hyprexpo.expo("toggle")
 	end)
 	-- hl.bind("SUPER + Escape", hl.plugin.hymission.close)
-	--     hl.bind(mainMod .. " + TAB", hl.dsp.focus({workspace = "previous"}),
-	--             {description = "Focus previous workspace"})
+	hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "previous" }), { description = "Focus previous workspace" })
 	hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }), { description = "Focus workspace e+1" })
 	hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }), { description = "Focus workspace e-1" })
 	hl.bind(mainMod .. " + bracketleft", hl.dsp.focus({ workspace = "e-1" }), { description = "Focus workspace e-1" })
@@ -177,12 +178,12 @@ function M.apply(config)
 	-------------------------------
 	-- code:49 is `~` key
 	hl.bind(
-		mainMod .. " + code:49",
+		mainMod .. " + Escape",
 		hl.dsp.workspace.toggle_special("magic"),
 		{ description = "Toggle special workspace" }
 	)
 	hl.bind(
-		mainMod .. " + SHIFT + code:49",
+		mainMod .. " + SHIFT + Escape",
 		hl.dsp.window.move({ workspace = "special:magic" }),
 		{ description = "Move window to special workspace" }
 	)
@@ -198,8 +199,8 @@ function M.apply(config)
 	---- SCREENSHOT -----
 	---------------------
 
-	hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(screenshotArea), { description = "Take area screenshot" })
-	hl.bind("PRINT", hl.dsp.exec_cmd(screenshotFull), { description = "Take full screenshot" })
+	-- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(screenshotArea), { description = "Take area screenshot" })
+	-- hl.bind("PRINT", hl.dsp.exec_cmd(screenshotFull), { description = "Take full screenshot" })
 
 	-------------------------
 	---- MEDIA / VOLUME -----
@@ -278,7 +279,6 @@ function M.apply(config)
 	---- clipboard ----
 	-------------------
 	hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(clipboard), { description = "Open clipboard manager" })
-	hl.bind("ALT + Tab", hl.dsp.exec_cmd("snappy-switcher next --mod alt"), { description = "Switch to next window" })
 
 	hl.bind(
 		mainMod .. " + F1",

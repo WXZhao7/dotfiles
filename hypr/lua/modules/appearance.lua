@@ -3,9 +3,9 @@ local M = {}
 function M.apply(_config)
 	hl.config({
 		general = {
-			gaps_in = 3,
-			gaps_out = 6,
-			border_size = 2,
+			gaps_in = 1,
+			gaps_out = 2,
+			border_size = 1,
 			resize_on_border = true,
 			allow_tearing = false,
 			layout = "dwindle",
@@ -29,18 +29,20 @@ function M.apply(_config)
 			disable_splash_rendering = true,
 		},
 
-		plugin = {
-			hyprexpo = {
-				columns = 2,
-				gaps_in = 5,
-				gaps_out = 0,
-				bg_col = "rgb(111111)",
-				workspace_method = "center current",
-				gesture_distance = 200,
-				cancel_key = "escape",
-				show_cursor = 1,
-			},
-		},
+		-- plugin = {
+		-- 	hyprexpo = {
+		-- 		columns = 3,
+		-- 		gaps_in = 5,
+		-- 		gaps_out = 0,
+		-- 		bg_col = "rgb(111111)",
+		-- 		workspace_method = "center current",
+		-- 		gesture_distance = 200,
+		-- 		cancel_key = "escape",
+		-- 		show_cursor = 1,
+		-- 		skip_empty = 1,
+		-- 		drag_drop_enable = 0, -- Disable moving windows by dragging workspace previews.
+		-- 	},
+		-- },
 	})
 end
 

@@ -36,16 +36,6 @@ function M.apply(_config)
 		confine_pointer = true,
 		no_anim = true,
 	})
-
-	hl.window_rule({
-		name = "moonlight-fullscreen-stream",
-		match = {
-			class = "com\\.moonlight_stream\\.Moonlight",
-			title = ".*- Moonlight",
-		},
-		fullscreen = true,
-		no_anim = true,
-	})
 	hl.window_rule({
 		name = "seahorse-float",
 		match = { class = "(org.gnome.seahorse.Application)" },
@@ -57,6 +47,19 @@ function M.apply(_config)
 		match = { class = "(org.fcitx.fcitx5-config-qt)" },
 		float = true,
 		center = true,
+	})
+	---------------------
+	---- FULLSCREEN -----
+	---------------------
+	hl.window_rule({
+		name = "moonlight-fullscreen-stream",
+		match = {
+			class = "com\\.moonlight_stream\\.Moonlight",
+			title = "negative:Moonlight",
+		},
+		-- maximize = true,
+		fullscreen = true,
+		no_anim = true,
 	})
 end
 
