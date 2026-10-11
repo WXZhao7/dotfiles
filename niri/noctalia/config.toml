@@ -1,0 +1,22 @@
+[shell]
+polkit_agent = true
+
+[bar.main]
+start = ["launcher", "taskbar"]
+
+[widget.taskbar]
+group_by_workspace = true
+workspace_group_content = "icons"
+
+show_workspace_label = true
+workspace_label_placement = "corner"
+workspace_group_capsule = false
+
+hide_empty_workspaces = true
+group_single_icon_per_app = false
+
+only_active_workspace = false
+show_all_outputs = false
+
+show_active_indicator = true
+icon_scale = 1.1
