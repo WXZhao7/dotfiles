@@ -1,10 +1,20 @@
+# configuration file for Noctalia V5
 [shell]
 polkit_agent = true
+
+[lockscreen]
+enabled = true
+grace_period_seconds = 0
+lock_before_suspend = true
+
+[hooks]
+started = "noctalia msg session lock"
 
 [bar.main]
 start = ["launcher", "taskbar"]
 
 [widget.taskbar]
+# workspace taskbar configuration
 group_by_workspace = true
 workspace_group_content = "icons"
 
@@ -20,3 +30,19 @@ show_all_outputs = false
 
 show_active_indicator = true
 icon_scale = 1.1
+
+
+[idle.behavior.lock]
+enabled = true
+timeout = 600
+action = "lock"
+
+[idle.behavior.screen-off]
+enabled = true
+timeout = 600
+action = "screen_off"
+
+[shell.screenshot]
+skip_annotate_on_copy_save = false  # Ctrl+C / Ctrl+S in the region overlay skip the annotation editor
+close_on_copy = true                # close the annotation editor after Copy or Ctrl+C succeeds
+close_on_save = false               # close the annotation editor after Save or Ctrl+S succeeds
