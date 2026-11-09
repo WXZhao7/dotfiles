@@ -1,14 +1,44 @@
 # configuration file for Noctalia V5
 [shell]
 polkit_agent = true
+lang = "zh-Hans"
+
+[shell.panel]
+clipboard_placement = "floating"
+clipboard_position = "center"
+open_near_click_clipboard = false
+
+[shell.screenshot]
+skip_annotate_on_copy_save = false  # Ctrl+C / Ctrl+S in the region overlay skip the annotation editor
+close_on_copy = true                # close the annotation editor after Copy or Ctrl+C succeeds
+close_on_save = false               # close the annotation editor after Save or Ctrl+S succeeds
+
+[brightness]
+enable_ddcutil = true
 
 [lockscreen]
 enabled = true
 grace_period_seconds = 0
 lock_before_suspend = true
 
+
 [hooks]
-started = "noctalia msg session lock"
+# greetd/initial_session使用/usr/local/bin/niri-autologin实现自动登录锁屏/greetd登录不锁屏
+# 
+# !/bin/sh
+# set -eu
+#
+# runtime_dir="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+# marker="$runtime_dir/noctalia-initial-lock"
+#
+# umask 077
+# : > "$marker"
+#
+# trap 'rm -f "$marker"' EXIT
+#
+# niri-session
+started = 'if [ -f "$XDG_RUNTIME_DIR/noctalia-initial-lock" ]; then noctalia msg session lock; fi'
+session_locked = 'rm -f "$XDG_RUNTIME_DIR/noctalia-initial-lock"'
 
 [bar.main]
 start = ["launcher", "taskbar"]
@@ -41,8 +71,3 @@ action = "lock"
 enabled = true
 timeout = 600
 action = "screen_off"
-
-[shell.screenshot]
-skip_annotate_on_copy_save = false  # Ctrl+C / Ctrl+S in the region overlay skip the annotation editor
-close_on_copy = true                # close the annotation editor after Copy or Ctrl+C succeeds
-close_on_save = false               # close the annotation editor after Save or Ctrl+S succeeds
